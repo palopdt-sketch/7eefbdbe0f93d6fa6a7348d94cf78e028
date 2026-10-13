@@ -1,0 +1,39 @@
+
+############# Powershell : Kiểm tra  1 ứng dụng đang chạy ở Windows nào #########################################
+
+------------- Cách 1: Kiểm tra bằng PowerShell
+
+
+Get-CimInstance Win32_Process -Filter "Name='ApplicationFrameHost.exe'" |
+ForEach-Object {
+    $p = $_
+    $owner = Invoke-CimMethod -InputObject $p -MethodName GetOwner
+
+    [PSCustomObject]@{
+        PID         = $p.ProcessId
+        ParentPID   = $p.ParentProcessId
+        WindowsName = (
+            Get-Process -Id $p.ProcessId -ErrorAction SilentlyContinue
+        ).MainWindowTitle
+        Executable  = $p.ExecutablePath
+        User        = "$($owner.Domain)\$($owner.User)"
+    }
+} | Format-Table -AutoSize
+
+	>>>>>>>>>>>>>>>>>>CMD : powershell -NoProfile -Command "Get-CimInstance Win32_Process -Filter \"Name='ApplicationFrameHost.exe'\" | ForEach-Object { $p = $_; $owner = Invoke-CimMethod -InputObject $p -MethodName GetOwner; [PSCustomObject]@{ PID=$p.ProcessId; ParentPID=$p.ParentProcessId; WindowsName=(Get-Process -Id $p.ProcessId -ErrorAction SilentlyContinue).MainWindowTitle; Executable=$p.ExecutablePath; User=('{0}\{1}' -f $owner.Domain,$owner.User) } } | Format-Table -AutoSize"
+
+------------- Cách 2: Liệt kê ứng dụng Windows đang chạy và đối chiếu cửa sổ
+
+Get-Process |
+Where-Object {
+    $_.MainWindowHandle -ne 0 -and
+    $_.MainWindowTitle -ne ""
+} |
+Select-Object Id, ProcessName, MainWindowTitle |
+Format-Table -AutoSize
+
+	>>>>>>>>>>>>>>>>>>CMD : tasklist /v /fi "imagename eq ApplicationFrameHost.exe"
+
+	>>>>>>>>>>>>	powershell -NoProfile -Command "Get-Process | Where-Object { $_.MainWindowHandle -ne 0 -and -not [string]::IsNullOrWhiteSpace($_.MainWindowTitle) -and $_.ProcessName -notin @('cmd','powershell','pwsh','WindowsTerminal','OpenConsole','conhost') } | Select-Object Id, ProcessName, MainWindowTitle, Path | Format-Table -AutoSize"
+
+	>>>>>>>>>>>>	powershell -NoProfile -Command "Get-Process | Where-Object { $_.MainWindowHandle -ne 0 -and -not [string]::IsNullOrWhiteSpace($_.MainWindowTitle) -and $_.ProcessName -notin @('cmd','powershell','pwsh','WindowsTerminal','OpenConsole','conhost') } | Select-Object Id, ProcessName, @{Name='MainWindowTitle';Expression={ if ($_.MainWindowTitle.Length -gt 30) { $_.MainWindowTitle.Substring(0,30) } else { $_.MainWindowTitle } }}, Path | Format-Table -AutoSize"
