@@ -1,4 +1,9 @@
 
+############# Powershell : Liệt kê windows chạy với file exe gì #########################################
+
+powershell -NoProfile -Command "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine | Format-List"
+
+
 ############# Powershell : Kiểm tra  1 ứng dụng đang chạy ở Windows nào #########################################
 
 ------------- Cách 1: Kiểm tra bằng PowerShell
