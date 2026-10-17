@@ -13,6 +13,10 @@ import os
 import re
 import winreg
 from pathlib import Path
+import sys
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 
 OUTPUT_FILE = Path.home() / "Desktop" / "installed_apps.txt"
 
