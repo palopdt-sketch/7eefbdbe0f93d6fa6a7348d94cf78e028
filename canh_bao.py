@@ -4,16 +4,6 @@
 Thông báo toàn màn hình kiểu "EMERGENCY ALERT" (PySide6).
 
 Cài đặt:   pip install PySide6
-Ví dụ:
-    python canh_bao.py --noidung "UTF-8 Đã Được cài đặt, vui lòng kiểm tra và khởi động lại chương trình uniweb" --img "https://example.com/a.png"
-
-Tham số:
-    --noidung  (BẮT BUỘC) Nội dung thông báo. Không có nội dung -> chương trình thoát.
-    --img      (tuỳ chọn) URL hoặc đường dẫn file ảnh.
-    --tieude   (tuỳ chọn) Tiêu đề lớn, mặc định "[EMERGENCY ALERT]".
-    --capdo    (tuỳ chọn) Chữ trong dải vàng, mặc định "SEVERE".
-    --icon     (tuỳ chọn) File icon ứng dụng (mặc định dùng app.ico / app.png cạnh script).
-    --timeout  (tuỳ chọn) Tự đóng sau N giây (mặc định: không tự đóng).
 
 Đóng thông báo: phím ESC / Enter hoặc bấm nút "XÁC NHẬN".
 """
