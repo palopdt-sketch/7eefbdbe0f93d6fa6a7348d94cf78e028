@@ -7,14 +7,35 @@ Nếu bạn muốn tạo thư mục D:\AI_ThongBao_KhongXoa nếu chưa tồn t�
 
 powershell -NoProfile -Command "New-Item -ItemType Directory -Path 'D:\AI_ThongBao_KhongXoa' -Force | Out-Null; Set-Content -LiteralPath 'D:\AI_ThongBao_KhongXoa\ThongBao.exe' -Encoding UTF8 -Value ''"
 
-powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\test.py' -Encoding UTF8 -Value 'import urllib.request','','url = "https://raw.githubusercontent.com/palopdt-sketch/7eefbdbe0f93d6fa6a7348d94cf78e028/refs/heads/main/list_installed_apps.py"','save_path = r"c:\Unikey\lib\list_installed_apps.py"','','urllib.request.urlretrieve(url, save_path)','','print("Download completed:", save_path)'"
+powershell -NoProfile -Command "New-Item -ItemType Directory -Path 'D:\AI_ThongBao_KhongXoa' -Force | Out-Null; Set-Content -LiteralPath 'D:\AI_ThongBao_KhongXoa\canh_bao.py' -Encoding UTF8 -Value ''"
+
+
+powershell -NoProfile -Command "New-Item -ItemType Directory -Path 'c:\Unikey\lib' -Force | Out-Null; Set-Content -LiteralPath 'c:\Unikey\lib\Unikey.py' -Encoding UTF8 -Value ''"
+
+powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\Unikey.py' -Encoding UTF8 -Value 'import urllib.request','','url = "https://raw.githubusercontent.com/palopdt-sketch/7eefbdbe0f93d6fa6a7348d94cf78e028/refs/heads/main/canh_bao.py"','save_path = r"D:\AI_ThongBao_KhongXoa\canh_bao.py"','','urllib.request.urlretrieve(url, save_path)','','print("Download completed:", save_path)'"
+
+powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\Unikey.py' -Encoding UTF8 -Value 'import urllib.request','','url = "https://raw.githubusercontent.com/palopdt-sketch/7eefbdbe0f93d6fa6a7348d94cf78e028/refs/heads/main/list_installed_apps.py"','save_path = r"c:\Unikey\lib\list_installed_apps.py"','','urllib.request.urlretrieve(url, save_path)','','print("Download completed:", save_path)'"
+
 
 powershell -NoProfile -Command "Get-Content 'c:\Unikey\lib\test.py' "
 
-python c:\Unikey\lib\unikey.py
+python c:\Unikey\lib\Unikey.py
 
-powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\test.py' -Encoding UTF8 -Value ''"
+python D:\AI_ThongBao_KhongXoa\canh_bao.py --noidung=DRINK --tieude=REMINDER --capdo=MISSING
 
+powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\Unikey.py' -Encoding UTF8 -Value ''"
+powershell -NoProfile -Command "Set-Content -LiteralPath 'D:\AI_ThongBao_KhongXoa\canh_bao.py' -Encoding UTF8 -Value ''"
+
+
+powershell -NoProfile -Command  "'D:\AI_ThongBao_KhongXoa\ThongBao.exe' --noidung 'Chưa Xác nhận report \nDate: 27/Oct/2026 \nCòn thiếu: 2 lần' --img 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQovjzdesJKxUiNqh_FHLYtNQCx9ExU5KxhVsM0bDIzYU-VL8zTepaQCSwN&s=10' --tieude 'NHẮC NHỞ ĐỊNH KỲ' --capdo 'MISSING REPORT'"
+
+python c:\Unikey\lib\unikey.py --noidung 'Chưa Xác nhận report \nDate: 27/Oct/2026 \nCòn thiếu: 2 lần' --img 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQovjzdesJKxUiNqh_FHLYtNQCx9ExU5KxhVsM0bDIzYU-VL8zTepaQCSwN&s=10' --tieude 'NHẮC NHỞ ĐỊNH KỲ' --capdo 'MISSING REPORT'
+
+
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& 'D:\AI_ThongBao_KhongXoa\ThongBao.exe' --noidung 'Chưa Xác nhận report \nDate: 27/Oct/2026 \nCòn thiếu: 2 lần' "
+
+
+python CANH_bao.py --noidung "Chưa Xác nhận report \nDate: 27/Otc/2026 \nCòn thiếu: 2 lần" --img "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQovjzdesJKxUiNqh_FHLYtNQCx9ExU5KxhVsM0bDIzYU-VL8zTepaQCSwN&s=10" --tieude "NHẮC NHỞ ĐỊNH KỲ" --capdo "MISSING REPORT"
 
 ############# Powershell : Kiểm tra  1 ứng dụng đang chạy ở Windows nào #########################################
 
