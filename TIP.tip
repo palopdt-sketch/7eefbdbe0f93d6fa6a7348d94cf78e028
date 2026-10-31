@@ -1,4 +1,6 @@
 
+python -m PyInstaller --clean --noconfirm --windowed --onefile --uac-admin --icon=app.ico --add-data "app.ico;." --name=ThongBao canh_bao.py
+
 ############# Powershell : Liệt kê windows chạy với file exe gì #########################################
 
 powershell -NoProfile -Command "Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine | Format-List"
@@ -36,6 +38,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "& 'D:\AI_ThongBao_KhongX
 
 
 python CANH_bao.py --noidung "Chưa Xác nhận report \nDate: 27/Otc/2026 \nCòn thiếu: 2 lần" --img "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQovjzdesJKxUiNqh_FHLYtNQCx9ExU5KxhVsM0bDIzYU-VL8zTepaQCSwN&s=10" --tieude "NHẮC NHỞ ĐỊNH KỲ" --capdo "MISSING REPORT"
+
+
+python c:\Unikey\lib\list_installed_apps.py
+
+D:\AI_ThongBao_KhongXoa\ThongBao.exe --noidung '[Fix] Add Reports as Requested'
 
 ############# Powershell : Kiểm tra  1 ứng dụng đang chạy ở Windows nào #########################################
 
