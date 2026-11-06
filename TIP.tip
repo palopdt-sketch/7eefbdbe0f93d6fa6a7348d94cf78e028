@@ -1,3 +1,4 @@
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome
 
 python -m PyInstaller --clean --noconfirm --windowed --onefile --uac-admin --icon=app.ico --add-data "app.ico;." --name=ThongBao canh_bao.py
 
@@ -20,6 +21,7 @@ powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\Unikey.p
 
 
 powershell -NoProfile -Command "Get-Content 'c:\Unikey\lib\test.py' "
+powershell -NoProfile -Command "Get-Content 'C:\ProgramData\AppDriver\dmlog.sqlite3' "
 
 python c:\Unikey\lib\Unikey.py
 
@@ -27,6 +29,13 @@ python D:\AI_ThongBao_KhongXoa\canh_bao.py --noidung=DRINK --tieude=REMINDER --c
 
 powershell -NoProfile -Command "Set-Content -LiteralPath 'c:\Unikey\lib\Unikey.py' -Encoding UTF8 -Value ''"
 powershell -NoProfile -Command "Set-Content -LiteralPath 'D:\AI_ThongBao_KhongXoa\canh_bao.py' -Encoding UTF8 -Value ''"
+
+Muốn xóa file database và tạo lại database SQLite rỗng hợp lệ
+python -c "import sqlite3; c=sqlite3.connect(r'c:\test\laghost.sqlite3'); c.close()"
+python -c "import sqlite3; c=sqlite3.connect(r'C:\ProgramData\AppDriver\dmlog.sqlite3'); c.close()"
+
+tạo file rỗng
+type nul > "C:\ProgramData\AppDriver\dmlog.sqlite3"
 
 
 powershell -NoProfile -Command  "'D:\AI_ThongBao_KhongXoa\ThongBao.exe' --noidung 'Chưa Xác nhận report \nDate: 27/Oct/2026 \nCòn thiếu: 2 lần' --img 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQovjzdesJKxUiNqh_FHLYtNQCx9ExU5KxhVsM0bDIzYU-VL8zTepaQCSwN&s=10' --tieude 'NHẮC NHỞ ĐỊNH KỲ' --capdo 'MISSING REPORT'"
